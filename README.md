@@ -119,10 +119,8 @@ _THEOS_PLATFORM_DPKG_DEB_COMPRESSION ?= xz
 [两个 Xcode 的实用工具： otool 和 install_name_tool](http://www.jianshu.com/p/193ba07dadcf)  
 [非越狱theos的Tweak创建的dylib安装到iOS设备](http://cdn2.jianshu.io/p/5d353d6db145)  
 [iOS 善意破解简书APP(非越狱篇)实现一键点赞](http://www.jianshu.com/p/ab8d6db22e0f)  
-  
-  
-  
-##### 已经越狱从砸壳开始  
+    
+###### 已经越狱从砸壳开始  
 [ios微信逆向实战--自动抢红包、修改步数、防止消息撤回](http://www.jianshu.com/p/ec0a682e6d83)  
   
   
