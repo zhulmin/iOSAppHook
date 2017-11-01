@@ -6,6 +6,7 @@
 #### 查看静态库文件(.a 编译文件?)工具
 nm 命令查看符号表信息   
 otool -hv xxx.a 查看支持的架构   
+otool -l [file] 查看app是否被砸壳过 cryptid 0(已经砸壳) 1(未砸壳)
 lipo -info \[file]  查看支持的架构  
 file \[file] 查看架构  
    
@@ -35,4 +36,10 @@ ARMv7, ARM11, Cortex A8 and A4
    
 
 #### 参考资料   
-[两个 Xcode 的实用工具： otool 和 install_name_tool](http://www.jianshu.com/p/193ba07dadcf)
+[两个 Xcode 的实用工具： otool 和 install_name_tool](http://www.jianshu.com/p/193ba07dadcf)  
+[非越狱theos的Tweak创建的dylib安装到iOS设备](http://cdn2.jianshu.io/p/5d353d6db145)  
+[iOS 善意破解简书APP(非越狱篇)实现一键点赞](http://www.jianshu.com/p/ab8d6db22e0f)  
+   
+   
+  
+  
