@@ -120,6 +120,8 @@ _THEOS_PLATFORM_DPKG_DEB_COMPRESSION ?= xz
 [非越狱theos的Tweak创建的dylib安装到iOS设备](http://cdn2.jianshu.io/p/5d353d6db145)  
 [iOS 善意破解简书APP(非越狱篇)实现一键点赞](http://www.jianshu.com/p/ab8d6db22e0f)  
     
+[Urinx/iOSAppHook](https://github.com/Urinx/iOSAppHook#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84CaptainHook%E8%BD%BD%E5%85%A5Cycript)  
+  
 ###### 已经越狱从砸壳开始  
 [ios微信逆向实战--自动抢红包、修改步数、防止消息撤回](http://www.jianshu.com/p/ec0a682e6d83)  
   
