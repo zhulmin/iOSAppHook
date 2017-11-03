@@ -78,9 +78,40 @@ ARMv7, ARM11, Cortex A8 and A4
 特别要注意一点，模拟器不会执行ARM代码，因为用模拟器的时候编译的是x86的代码，是用于在mac上本地执行的。
 ```
    
-   
-   
+### iOS 安全  
+  
+``
+###### Q: 证书绑定（pinning certificates）能否防止中间人攻击？
 
+Conrad：证书绑定是一个用来防止中间人攻击的方法，在实践中确实很有用，前提是你的手机未越狱。比如 Twitter 就在用证书绑定技术。然而，用逆向工具 Cycript 能够轻松破解。AFNetworking 支持证书绑定，只要设置一下 SSLPinningMode 这个属性。然而… 我们可以用 Cycript，再把它修改成 none，如果你的 iPhone 越狱了，或者被人控制了。所以，并没有一种方案能够彻底防止你的流量被检测，如果没有越狱，倒是一种很好的保护方法。
+
+###### Q: 是否推荐类似 cocoapods-keys 这样的工具来混淆字符串？
+
+Conrad: 字符串混淆有以下的好处：
+
+－ 如果你用苹果框架里的私有 API，能很容易的躲避过苹果审查的自动扫描工具。 － 如果那个人并没有一部越狱的 iPhone，或者它不知道如何解析混淆，他可能很难找到 app 里的字符串。
+
+然而，你无法永远的把字符串藏起来。比如，在 Cycript 中，你可以轻易地解开混淆。所以字符串混淆也不是没法破的保护方案。
+
+###### Q: class-dump 和 dumpdecryped 的区别是啥？
+
+Conrad: 他们事实上是不同的工具。dumpecrypted 能将一个 App Store 加密的工具解密。而 class-dump 能将一个解密后得二进制文件去除他的 Objective-C 接口文件，跟 IDA 有点像，不过很遗憾的是：它不支持 Swift。
+
+###### Q: 导出 Apple framework 的库，比如：this one，是不是也是用的 class-dump？
+
+Conrad: 是的，苹果的框架没有加密，可以被轻易地导出所有的class。这意味着那些把苹果的私有interface 放到GitHub上的，你可以轻易地搞定他们。
+
+###### Q: 逆向工程是否存在法律问题？Lyft 会不会不同意调用他们的私有代码和 api？
+
+Conrad: 从法律上讲，我觉得没有太多问题。我们通常会跟所有的合作伙伴去聊到我们在做的事情。比如：我刚刚发现的这些东西我都会和 Lyft 讨论一下，在他们允许后集成到 Workflow 里。这些技术其实也有很多道德上的考虑。不过话说回来，这些技术也能阻止开发者们胡乱搞，就比如之前逆向 Twitter 发现他们上传用户手机里装的 App 列表到他们的服务器上。所以凡事总有两面，逆向工程只是个工具，善用就好了。
+
+###### Q: 如何查看苹果框架的反汇编代码？
+
+Conrad: 这个的过程跟我之前展示的一个很像，只不过你不再需要一个越狱后的设备。当你把线插到设备上的时候，iTunes 实际上获取到了设备的符号，你可以在 Xcode 里找到一个大概叫 “device symbol” 文件夹，在 IDA 或者 class-dump 里打开 Apple 的 frameworks，然后展开分析。这些都是没加密的，而且可以直接拿来用。在修复一些 beta 版本的 UIKit 的 bug 的时候很好使。
+```
+
+  
+  
 #### 遇到的问题
   
   
@@ -119,9 +150,12 @@ _THEOS_PLATFORM_DPKG_DEB_COMPRESSION ?= xz
 [两个 Xcode 的实用工具： otool 和 install_name_tool](http://www.jianshu.com/p/193ba07dadcf)  
 [非越狱theos的Tweak创建的dylib安装到iOS设备](http://cdn2.jianshu.io/p/5d353d6db145)  
 [iOS 善意破解简书APP(非越狱篇)实现一键点赞](http://www.jianshu.com/p/ab8d6db22e0f)  
-    
+
 [Urinx/iOSAppHook](https://github.com/Urinx/iOSAppHook#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84CaptainHook%E8%BD%BD%E5%85%A5Cycript)  
-  
+##### iOS 安全  
+[iOS App 的逆向工程: Hacking on Lyft](https://academy.realm.io/cn/posts/conrad-kramer-reverse-engineering-ios-apps-lyft/)  
+
+
 ###### 已经越狱从砸壳开始  
 [ios微信逆向实战--自动抢红包、修改步数、防止消息撤回](http://www.jianshu.com/p/ec0a682e6d83)  
   
