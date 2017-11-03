@@ -80,7 +80,7 @@ ARMv7, ARM11, Cortex A8 and A4
    
 ### iOS 安全  
   
-``
+```
 ###### Q: 证书绑定（pinning certificates）能否防止中间人攻击？
 
 Conrad：证书绑定是一个用来防止中间人攻击的方法，在实践中确实很有用，前提是你的手机未越狱。比如 Twitter 就在用证书绑定技术。然而，用逆向工具 Cycript 能够轻松破解。AFNetworking 支持证书绑定，只要设置一下 SSLPinningMode 这个属性。然而… 我们可以用 Cycript，再把它修改成 none，如果你的 iPhone 越狱了，或者被人控制了。所以，并没有一种方案能够彻底防止你的流量被检测，如果没有越狱，倒是一种很好的保护方法。
